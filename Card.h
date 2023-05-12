@@ -5,7 +5,7 @@
 #define EX2_Card_H
 
 #include <string>
-#include "Player.h"
+//#include "Player.h"
 #include "utilities.h"
 
 /*
@@ -19,6 +19,7 @@
 enum class CardType {Battle, Buff, Heal, Treasure}; // The type of the Card
 
 class Card {
+
 public:
     /*
      * C'tor of Card class
@@ -47,7 +48,7 @@ public:
      * @return
      *      void
     */
-    void printInfo() const;
+    void printInfo() const; // DONE
 
 
     /*

@@ -60,6 +60,11 @@ public:
     //TODO: complete the Mtmchkin class.
 
 private:
+
+    Player m_player; // need to be initialized in the c'tor
+    GameStatus m_gameStatus; // need to be initialized in the c'tor
+    // array of cards
+    // size of array of cards
     //TODO: complete the Mtmchkin class.
 
 };

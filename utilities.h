@@ -12,6 +12,7 @@
  * Numeric stats of a card.
  */
 struct CardStats{
+
     int force;  // The force of the monster
     int loot; // The profit you get when winning a battle or when getting a "Treasure" card
     int hpLossOnDefeat; // The amount of hp you lose when losing the battle
@@ -19,7 +20,6 @@ struct CardStats{
     int cost; // The cost of a "Buff/Heal" card
     int heal; // The amount of HP you get when buying a "HEAL" card
     int buff; // The amount of force you get when buying a "BUFF" card
-
 
     /*
      *C'tor of CardStats:
