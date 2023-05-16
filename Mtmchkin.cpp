@@ -22,9 +22,9 @@ Mtmchkin::~Mtmchkin(){
 Mtmchkin::Mtmchkin(const Mtmchkin& copyMtmchkin): 
 m_player(copyMtmchkin.m_player), m_cards(new Card[copyMtmchkin.m_size])
 {
-    m_gameStatus = copyMtmchkin.m_gameStatus;
-    m_size = copyMtmchkin.m_size;
-    m_currentCard = copyMtmchkin.m_currentCard;
+    setGameStatus(copyMtmchkin.m_gameStatus);
+    setNumCard(copyMtmchkin.m_size);
+    setCurrentCard(copyMtmchkin.m_currentCard);
     for(int i = 0; i < m_size; i++){
 
         m_cards[i] = copyMtmchkin.m_cards[i];
@@ -34,21 +34,21 @@ m_player(copyMtmchkin.m_player), m_cards(new Card[copyMtmchkin.m_size])
 
 void Mtmchkin::playNextCard(){
 
-    if(m_currentCard == m_size){
+    if(getCurrentCard() == getNumCard()){
 
-        m_currentCard = 0;
+        setCurrentCard(0);
     }
    
-    m_cards[m_currentCard].printInfo();
-    m_cards[m_currentCard].applyEncounter(m_player);
-    m_player.printInfo();
-    m_currentCard+=1;
+    getCards()[getCurrentCard()].printInfo();
+    getCards()[getCurrentCard()].applyEncounter(m_player);
+    getPlayer().printInfo();
+    setCurrentCard(getCurrentCard()+1);
 
 }
 
 bool Mtmchkin::isOver() const {
     
-    if (m_player.getLevel() == 10 || m_player.isKnockedOut()) {
+    if (getPlayer().getLevel() == 10 || getPlayer().isKnockedOut()) {
 
         return true;
     }
@@ -61,7 +61,7 @@ GameStatus Mtmchkin::getGameStatus() const{
 
     if (isOver()){
         
-        if (m_player.getLevel() == 10){ // if the player won
+        if (getPlayer().getLevel() == 10){ // if the player won
 
             return GameStatus::Win;
         }
@@ -72,4 +72,39 @@ GameStatus Mtmchkin::getGameStatus() const{
 
     return GameStatus::MidGame; // if the game is still running
 
+}
+
+//get set functions
+
+Player Mtmchkin::getPlayer() const{
+
+    return m_player;
+}
+GameStatus Mtmchkin::getGameStatus() const{
+
+    return m_gameStatus;
+}
+Card* Mtmchkin::getCards() const{
+
+    return m_cards;
+}
+int Mtmchkin::getNumCard() const{
+
+    return m_size;
+}
+int Mtmchkin::getCurrentCard() const{
+
+    return m_currentCard;
+}
+void Mtmchkin::setGameStatus(GameStatus status){
+
+    m_gameStatus = status;
+}
+void Mtmchkin::setCurrentCard(int index){
+
+    m_currentCard = index;
+}
+void Mtmchkin::setNumCard(int num){
+
+    m_size = num;
 }

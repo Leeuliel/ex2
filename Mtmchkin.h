@@ -71,6 +71,16 @@ private:
     Card *m_cards; // array of cards
     int m_size; // size of array of cards
     static int m_currentCard;
+    Player getPlayer() const;
+    GameStatus getGameStatus() const;
+    Card* getCards() const;
+    int getNumCard() const;
+    int getCurrentCard() const;
+    void setGameStatus(GameStatus status);
+    void setCurrentCard(int index);
+    void setNumCard(int num);
+
+
     //TODO: complete the Mtmchkin class.
 
 };

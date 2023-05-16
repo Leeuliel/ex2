@@ -34,9 +34,9 @@ void setCoins(int newCoins);
 
 public:
 Player(std::string rname, int rmaxHP = 100, int rforce = 5);
-~Player();
-//1 more
-Player(const Player&);
+~Player() = default;
+Player& operator=(const Player& other) = default;
+Player(const Player&) = default;    
 
 void printInfo() const;
 void levelUp();

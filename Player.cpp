@@ -27,19 +27,6 @@ else{
 }
 }
 
-Player::~Player(){}
-
-Player::Player(const Player& copyPlayer){
-
-    m_name = copyPlayer.m_name;
-    m_level = copyPlayer.m_level;
-    m_force = copyPlayer.m_force;
-    m_maxHP = copyPlayer.m_maxHP;
-    m_HP = copyPlayer.m_HP;
-    m_coins = copyPlayer.m_coins;
-
-}
-
 void Player::printInfo() const{
 
 printPlayerInfo(getName().c_str(), getLevel(), getForce(), getHP(), getCoins());
