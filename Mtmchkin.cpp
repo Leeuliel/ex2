@@ -4,7 +4,7 @@ Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCard
   
     m_gameStatus = GameStatus::MidGame;
     m_size = numOfCards;
-    m_cards = (Card*)malloc(m_size * sizeof(Card));
+    m_cards = new Card[m_size];
     for (int i = 0; i < m_size; i++){
 
         m_cards[i] = cardsArray[i];
