@@ -29,6 +29,11 @@ public:
     */
     Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards);
 
+    //destructor
+    ~Mtmchkin();
+
+    //copy constructor
+    Mtmchkin(const Mtmchkin&);
 
     /*
      * Play the next Card - according to the instruction in the exercise document
@@ -63,8 +68,9 @@ private:
 
     Player m_player; // need to be initialized in the c'tor
     GameStatus m_gameStatus; // need to be initialized in the c'tor
-    // array of cards
-    // size of array of cards
+    Card *m_cards; // array of cards
+    int m_size; // size of array of cards
+    static int m_currentCard;
     //TODO: complete the Mtmchkin class.
 
 };
