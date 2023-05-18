@@ -1,30 +1,32 @@
 #include "Player.h"
 
 
-Player::Player(std::string rname, int rmaxHP = 100, int rforce = 5){
+Player::Player(std::string rname, int rmaxHP, int rforce){
 
-setName(rname);
-setLevel(START_LEVEL);
-setCoins(START_COINS);
+    setName(rname);
 
-if(rforce < 0){
+    setLevel(START_LEVEL);
+    setCoins(START_COINS);
+
+    if(rforce < 0){
     
-    setForce(DEFAULT_FORCE);
-}
-else{
+        setForce(DEFAULT_FORCE);
+    }
+    else{
     
-    setForce(rforce);
-}
-if(rmaxHP <= 0){
+        setForce(rforce);
+    }
 
-    setMaxHP(DEFAULT_HP);
-    setHP(DEFAULT_HP);
-}
-else{
+    if(rmaxHP <= 0){
 
-   setMaxHP(rmaxHP);
-   setHP(rmaxHP);
-}
+        setMaxHP(DEFAULT_HP);
+        setHP(DEFAULT_HP);
+    }
+    else{
+
+        setMaxHP(rmaxHP);
+        setHP(rmaxHP);
+    }
 }
 
 void Player::printInfo() const{
@@ -58,21 +60,23 @@ void Player::heal(int add){
         }
     }
 }
+
 void Player::damage(int less){
   
-   if(less > 0){
+   if (less > 0){
 
-        if(less > getMaxHP()){
+        if(less > getHP()){
 
             setHP(0);
         }
         else{
             
-             setHP(getHP()-less);
+            setHP(getHP()-less);
         }
     }
 
 }
+
 bool Player::isKnockedOut() const{
 
     if(getHP() == 0){
@@ -102,7 +106,7 @@ bool Player::pay(int credit){
 
 int Player::getAttackStrength() const{
 
-return (getLevel() + getForce());
+    return (getLevel() + getForce());
 
 }
 
@@ -112,46 +116,57 @@ std::string  Player::getName() const{
 
     return m_name;
 }
+
 int Player::getLevel() const{
 
     return m_level;
 }
+
 int Player::getForce() const{
 
     return m_force;
 }
+
 int Player::getMaxHP() const{
 
     return m_maxHP;
 }
+
 int Player::getHP() const{
 
     return m_HP;
 }
+
 int Player::getCoins() const{
 
     return m_coins;
 }
+
 void Player::setName(std::string newName){
 
     m_name = newName;
 }
+
 void Player::setLevel(int newLevel){
 
     m_level = newLevel;
 }
+
 void Player::setForce(int newForce){
 
     m_force = newForce;
 }
+
 void Player::setMaxHP(int newMaxHP){
 
     m_maxHP = newMaxHP;
 }
+
 void Player::setHP(int newHP){
 
     m_HP = newHP;
 }
+
 void Player::setCoins(int newCoins){
 
     m_coins = newCoins;

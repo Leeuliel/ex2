@@ -1,6 +1,6 @@
 #include "Mtmchkin.h"
 
-Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_player(playerName){
+Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_player(playerName,DEFAULT_HP,DEFAULT_FORCE){
   
     m_gameStatus = GameStatus::MidGame;
     m_size = numOfCards;
@@ -71,7 +71,6 @@ GameStatus Mtmchkin::getGameStatus() const{
     }
 
     return GameStatus::MidGame; // if the game is still running
-
 }
 
 //get set functions
@@ -80,10 +79,7 @@ Player Mtmchkin::getPlayer() const{
 
     return m_player;
 }
-GameStatus Mtmchkin::getGameStatus() const{
 
-    return m_gameStatus;
-}
 Card* Mtmchkin::getCards() const{
 
     return m_cards;

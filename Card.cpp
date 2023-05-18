@@ -5,6 +5,8 @@ Card::Card(CardType type, const CardStats& stats): m_effect(type), m_stats(stats
 
     // initialize the members of the class from the initializer list
     // nothing to do here
+    m_effect = type;
+    m_stats = stats;
 
 }
 

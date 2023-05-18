@@ -1,0 +1,48 @@
+[33mcommit cdf09078e6601c90e984626f3898a181d7827b8e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: refael <hadadrefaelhadad@gmail.com>
+Date:   Fri May 12 17:12:47 2023 +0300
+
+    Made my part
+
+[33mcommit 6e9da0d20ff15ae0b87aca8381ca604be66b8f7c[m
+Author: Daniel_Meents <7707daniel@gmail.com>
+Date:   Sun May 8 12:45:39 2022 +0300
+
+    fixed braces convenstion
+
+[33mcommit bc6d5281d1508f89cee4abd501dd5c3ff6fee59d[m
+Merge: 4dda22f 5cf6d63
+Author: Daniel_Meents <7707daniel@gmail.com>
+Date:   Sun May 8 11:42:54 2022 +0300
+
+    Merge branch 'main' of https://github.com/CS234124/ex2 into main
+
+[33mcommit 4dda22f102bc30dbb2a4001456e22bee9bab8513[m
+Author: Daniel_Meents <7707daniel@gmail.com>
+Date:   Sun May 8 11:42:32 2022 +0300
+
+    add const to isOver in Mtmchkin.h
+
+[33mcommit 5cf6d63acc8e7e4915af88d7b6b4c361d84b1cea[m
+Author: Efrat Levkovich <efrat3232@gmail.com>
+Date:   Sat Apr 30 17:38:22 2022 +0300
+
+    Update Mtmchkin.h
+
+[33mcommit 1becce999c705bca56ef7fa6f54c069159fbffd1[m
+Author: Daniel_Meents <7707daniel@gmail.com>
+Date:   Sat Apr 30 16:47:53 2022 +0300
+
+    updated files for ex2
+
+[33mcommit 14b01efc007fa5bc5398fed7d01e5cad4c80d29f[m
+Author: Daniel_Meents <7707daniel@gmail.com>
+Date:   Wed Apr 27 01:29:15 2022 +0300
+
+    moved files back
+
+[33mcommit 561f8a4301f62ec597b7c655e946a9e82ea8c5fe[m
+Author: efrat3232 <efrat3232@gmail.com>
+Date:   Wed Apr 27 01:21:26 2022 +0300
+
+    first commit

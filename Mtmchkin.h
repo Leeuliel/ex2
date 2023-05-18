@@ -16,6 +16,7 @@
 enum class GameStatus{Win, Loss, MidGame};
 
 class Mtmchkin {
+
 public:
 
     /*
@@ -70,9 +71,8 @@ private:
     GameStatus m_gameStatus; // need to be initialized in the c'tor
     Card *m_cards; // array of cards
     int m_size; // size of array of cards
-    static int m_currentCard;
+    int m_currentCard;
     Player getPlayer() const;
-    GameStatus getGameStatus() const;
     Card* getCards() const;
     int getNumCard() const;
     int getCurrentCard() const;
