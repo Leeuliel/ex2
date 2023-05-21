@@ -4,8 +4,9 @@
 #ifndef EX2_Card_H
 #define EX2_Card_H
 
+#include <string>
 #include "Player.h"
-
+#include "utilities.h"
 
 /*
  *  CardType:
@@ -18,12 +19,7 @@
 enum class CardType {Battle, Buff, Heal, Treasure}; // The type of the Card
 
 class Card {
-
-    CardType m_effect;
-    CardStats m_stats;
-    
-    
-    public:
+public:
     /*
      * C'tor of Card class
      *
@@ -51,7 +47,7 @@ class Card {
      * @return
      *      void
     */
-    void printInfo() const; // DONE
+    void printInfo() const;
 
 
     /*
@@ -67,6 +63,10 @@ class Card {
     ~Card() = default;
     Card& operator=(const Card& other) = default;
 
+
+private:
+    CardType m_effect;
+    CardStats m_stats;
 
 };
 
