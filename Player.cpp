@@ -1,85 +1,94 @@
 #include "Player.h"
 
 
-Player::Player(std::string rname, int rmaxHP, int rforce){
+Player::Player(std::string playerName, int playerMaxHP, int playerForce){
 
-    setName(rname);
+    setName(playerName);
 
     setLevel(START_LEVEL);
     setCoins(START_COINS);
 
-    if(rforce < 0){
+    if(playerForce <= 0){
     
-        setForce(DEFAULT_FORCE);
+        setForce(DEFAULT_FORCE); // maybe playerForce < 0
     }
     else{
     
-        setForce(rforce);
+        setForce(playerForce);
     }
 
-    if(rmaxHP <= 0){
+    if(playerMaxHP <= 0){
 
         setMaxHP(DEFAULT_HP);
         setHP(DEFAULT_HP);
     }
     else{
 
-        setMaxHP(rmaxHP);
-        setHP(rmaxHP);
+        setMaxHP(playerMaxHP);
+        setHP(playerMaxHP);
     }
 }
 
 void Player::printInfo() const{
 
-printPlayerInfo(getName().c_str(), getLevel(), getForce(), getHP(), getCoins());
+    printPlayerInfo(getName().c_str(), getLevel(), getForce(), getHP(), getCoins());
 
 }
 
 void Player::levelUp(){
- 
- if(getLevel() < 10){
+
+    // if the player is not in the max level, he can level up one level
+
+    int level = this->getLevel();
     
-    setLevel(getLevel()+1);
- }
+    if (level < 10){
+    
+        this->setLevel(level+1);
+    }
+
 }
 
+void Player::buff(int force){
 
-void Player::buff(int add){
-
-    setForce(getForce()+add);
+    this->setForce(getForce()+force);
 }
 
-void Player::heal(int add){
+void Player::heal(int heal){
 
-    if(add > 0){
+    // if the player can heal, heal him
 
-        if(getHP() + add <= getMaxHP()){
+    if (heal > 0){
 
-        setHP(getHP()+add);
+        if (this->getHP() + heal <= getMaxHP()){
+
+            setHP(this->getHP() + heal);
         
         }
     }
 }
 
-void Player::damage(int less){
-  
-   if (less > 0){
+void Player::damage(int damage){
 
-        if(less > getHP()){
+    // if the player can get damage, damage him
+  
+    if (damage > 0){
+
+        if (damage >= this->getHP()){
 
             setHP(0);
         }
         else{
             
-            setHP(getHP()-less);
+            setHP(this->getHP() - damage);
         }
     }
 
 }
 
-bool Player::isKnockedOut() const{
+bool Player::isKnockedOut() const{ // if the player is knocked out, return true
 
-    if(getHP() == 0){
+
+    if(this->getHP() <= 0){
        
        return true;
     }
@@ -87,30 +96,40 @@ bool Player::isKnockedOut() const{
     return false;
 }
 
-void Player::addCoins(int add){
+void Player::addCoins(int coins){
 
-   setCoins(getCoins()+add);
+    // if the player get coins, add them to his coins
+
+    if (coins > 0){
+
+        this->setCoins(this->getCoins()+coins);
+
+    }
 
 }
 
-bool Player::pay(int credit){
+bool Player::pay(int payment){
 
-    if(getCoins() - credit < 0){
+    // if the player can pay, pay the payment and return true, else return false
+
+    if((this->getCoins() - payment) < 0){
         
         return false;
     }
 
-    setCoins(getCoins()-credit);
+    setCoins((this->getCoins() - payment));
+
     return true;
 }
 
 int Player::getAttackStrength() const{
 
-    return (getLevel() + getForce());
+    // return the attack strength of the player
+    return (this->getLevel() + this->getForce());
 
 }
 
-//set and get function
+//set and get functions
 
 std::string  Player::getName() const{
 

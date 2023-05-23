@@ -1,30 +1,44 @@
 #include "Mtmchkin.h"
 
-Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_player(playerName,DEFAULT_HP,DEFAULT_FORCE){
+Mtmchkin::Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards): m_player(playerName ,DEFAULT_HP ,DEFAULT_FORCE){
   
-    m_gameStatus = GameStatus::MidGame;
-    m_size = numOfCards;
-    m_cards = new Card[m_size];
+    // set the other fields
+    this->m_gameStatus = GameStatus::MidGame;
+    this->m_size = numOfCards;
+    this->m_cards = new Card[m_size];
+	
+    // copy the cards from the array to the new array
+    // every card object is not dinamiclly allocated so we can copy it with the default copy c'tor of the Card class
     for (int i = 0; i < m_size; i++){
 
-        m_cards[i] = cardsArray[i];
-    
+        this->m_cards[i] = cardsArray[i];
     }
-    m_currentCard = 0;
+	
+    this->m_currentCard = 0;
 }
 
 Mtmchkin::~Mtmchkin(){
 
     delete[]  m_cards;
-
 }
 
-Mtmchkin::Mtmchkin(const Mtmchkin& copyMtmchkin): 
-m_player(copyMtmchkin.m_player), m_cards(new Card[copyMtmchkin.m_size])
+
+// player is not dinamiclly allocated so we can copy it with the default copy c'tor from the initialization list
+// make a new array of cards and copy the cards from the other Mtmchkin - 
+// we initialize an empty array of cards in size of the other Mtmchkin and then copy the cards from the other Mtmchkin
+// (the copy will happen in the for loop) and not from the initialization list
+Mtmchkin::Mtmchkin(const Mtmchkin& copyMtmchkin):
+m_player(copyMtmchkin.m_player), m_cards(new Card[copyMtmchkin.getCardNumber()]) 
 {
-    setGameStatus(copyMtmchkin.m_gameStatus);
-    setNumCard(copyMtmchkin.m_size);
-    setCurrentCard(copyMtmchkin.m_currentCard);
+    
+    // set the other fields
+    this->setGameStatus(copyMtmchkin.getGameStatus());
+    this->setNumCard(copyMtmchkin.getCardNumber());
+    this->setCurrentCard(copyMtmchkin.getCurrentCard());
+
+    // copy the cards from the other Mtmchkin
+    // every card object is not dinamiclly allocated so we can copy it with the default copy c'tor of the Card class
+
     for(int i = 0; i < m_size; i++){
 
         m_cards[i] = copyMtmchkin.m_cards[i];
@@ -32,23 +46,25 @@ m_player(copyMtmchkin.m_player), m_cards(new Card[copyMtmchkin.m_size])
 
 }
 
-void Mtmchkin::playNextCard(){
+void Mtmchkin::playNextCard(){ 
 
-    if(getCurrentCard() == getNumCard()){
+    // this function play the next card in the array of cards
+
+    if (this->getCurrentCard() == this->getCardNumber()){
 
         setCurrentCard(0);
     }
    
-    getCards()[getCurrentCard()].printInfo();
-    getCards()[getCurrentCard()].applyEncounter(m_player);
-    getPlayer().printInfo();
-    setCurrentCard(getCurrentCard()+1);
+    this->getCards()[this->getCurrentCard()].printInfo();
+    this->getCards()[this->getCurrentCard()].applyEncounter(this->m_player);
+    this->getPlayer().printInfo();
+    this->setCurrentCard(this->getCurrentCard() + 1);
 
 }
 
-bool Mtmchkin::isOver() const {
+bool Mtmchkin::isOver() const { // this function check if the game is over
     
-    if (getPlayer().getLevel() == 10 || getPlayer().isKnockedOut()) {
+    if (this->getPlayer().getLevel() == 10 || this->getPlayer().isKnockedOut()) {
 
         return true;
     }
@@ -59,7 +75,7 @@ bool Mtmchkin::isOver() const {
 
 GameStatus Mtmchkin::getGameStatus() const{
 
-    if (isOver()){
+    if (this->isOver()){
         
         if (getPlayer().getLevel() == 10){ // if the player won
 
@@ -73,7 +89,7 @@ GameStatus Mtmchkin::getGameStatus() const{
     return GameStatus::MidGame; // if the game is still running
 }
 
-//get set functions
+//get and set functions
 
 Player Mtmchkin::getPlayer() const{
 
@@ -84,7 +100,7 @@ Card* Mtmchkin::getCards() const{
 
     return m_cards;
 }
-int Mtmchkin::getNumCard() const{
+int Mtmchkin::getCardNumber() const{
 
     return m_size;
 }

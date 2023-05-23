@@ -25,10 +25,10 @@ private:
 
 
 public:
-    Player(std::string rname, int rmaxHP = DEFAULT_HP, int rforce = DEFAULT_FORCE);
+    Player(std::string playerName, int PlayerMaxHP = DEFAULT_HP, int PlayerForce = DEFAULT_FORCE);
     ~Player() = default;
     Player& operator=(const Player& other) = default;
-    Player(const Player&) = default;    
+    Player(const Player&) = default; 
     void printInfo() const;
     void levelUp();
     int getLevel() const;

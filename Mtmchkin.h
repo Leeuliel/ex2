@@ -64,6 +64,14 @@ public:
     GameStatus getGameStatus() const;
 
     //TODO: complete the Mtmchkin class.
+	
+	Player getPlayer() const;
+    Card* getCards() const;
+    int getCardNumber() const;
+    int getCurrentCard() const;
+    void setGameStatus(GameStatus status);
+    void setCurrentCard(int index);
+    void setNumCard(int num);
 
 private:
 
@@ -72,14 +80,6 @@ private:
     Card *m_cards; // array of cards
     int m_size; // size of array of cards
     int m_currentCard;
-    Player getPlayer() const;
-    Card* getCards() const;
-    int getNumCard() const;
-    int getCurrentCard() const;
-    void setGameStatus(GameStatus status);
-    void setCurrentCard(int index);
-    void setNumCard(int num);
-
 
     //TODO: complete the Mtmchkin class.
 
